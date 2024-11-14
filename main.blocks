@@ -1,1 +1,18 @@
-<xml xmlns="https://developers.google.com/blockly/xml"><block type="pxt-on-start" id="yo]CirBY%mz.e/B.gZ95" x="0" y="0"></block></xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable id="G?W,XW%+12@/~@Aq2U)C">mySprite</variable><variable type="KIND_SpriteKind" id="P9P|QDRe2ET(AkA;uqR*">Player</variable><variable type="KIND_SpriteKind" id="+*w;IdE%PcZ%HH;xS(A%">Projectile</variable><variable type="KIND_SpriteKind" id="N.F/,=A.oi/Y-Vy77EB6">Food</variable><variable type="KIND_SpriteKind" id="%[{Z8_?l,z4s2M38E~64">Enemy</variable><variable type="KIND_SpriteKind" id="qUn#NF+D]]-.$Hw7A$!y">StatusBar</variable></variables><block type="pxt-on-start" id="yo]CirBY%mz.e/B.gZ95" x="0" y="0"><statement name="HANDLER"><block type="variables_set" id="(6(asPM[~(O9g60G@J#F"><field name="VAR" id="G?W,XW%+12@/~@Aq2U)C">mySprite</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate" id="H8L3IxEIV[B%$#@O/t]j"><value name="img"><shadow type="screen_image_picker" id=":7.GR92{.=ro-N8,G]3g"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field><data>{"commentRefs":[],"fieldData":{"img":":7.GR92{.=ro-N8,G]3g"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="D*8pohS:J_NsSW+QceA{"><field name="MEMBER">Player</field></shadow></value></block></value><next><block type="set_current_tilemap" id="FE!vAl6zhABs7`pJ(AV3"><value name="tilemap"><shadow type="tiles_tilemap_editor" id="/Su!r]MFZm++Evzs*;Yl"><field name="tilemap">tilemap`level2`</field><data>{"commentRefs":[],"fieldData":{"tilemap":"level2"}}</data></shadow></value></block></next></block></statement></block></xml>
