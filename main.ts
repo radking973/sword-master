@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const greg = SpriteKind.create()
     export const Wizard = SpriteKind.create()
 }
+// ending
 statusbars.onDisplayUpdated(StatusBarKind.EnemyHealth, function (status, image2) {
     tiles.setCurrentTilemap(tilemap`level2`)
     player1 = sprites.create(img`
@@ -29,8 +30,9 @@ statusbars.onDisplayUpdated(StatusBarKind.EnemyHealth, function (status, image2)
     game.gameOver(true)
     game.setGameOverEffect(true, effects.confetti)
 })
+// dodge eliminator
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (choice == 1) {
+    if (choice == 2) {
         info.changeLifeBy(-3)
     }
 })
@@ -331,10 +333,36 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.greg, function (sprite, otherSpr
     pause(6000)
     choice = game.askForNumber("Right?", 1)
     if (choice == 1) {
-        game.splash("alright, here you go")
+        tutorialGreg.sayText("alright, here you go")
+        pause(2000)
+        sprites.destroy(player1)
+        player2 = sprites.create(img`
+            . . . . . f f f f f . . . . . . . . 
+            . . . . f f . . . f f . . . . . . . 
+            . . . . f . . . . . f . . . . . . . 
+            . . . . f . . . . . f . . . . . . . 
+            . . . . f f . . . f f . . . . . . . 
+            . . . . . f f f f f . . . . . . . . 
+            . . . . . . . f . . . . . . . . . . 
+            . . . . . f f f f f . . e . . . . . 
+            . . f f f f . f . f f e e b b b b b 
+            . . . . . . . f . . . . e . . . . . 
+            . . . . . . . f . . . . . . . . . . 
+            . . . . . . . f . . . . . . . . . . 
+            . . . . . . f f f . . . . . . . . . 
+            . . . . . f f . f f . . . . . . . . 
+            . . . . f f . . . f f . . . . . . . 
+            . . . . f . . . . . f . . . . . . . 
+            `, SpriteKind.Player)
+        player2.setPosition(61, 96)
+        controller.moveSprite(player2, 40, 40)
+        tutorialGreg.sayText("This is the submachine sword")
+        pause(2000)
+        tutorialGreg.sayText("press A to fire, B to exit", 20000, false)
     } else {
-        game.splash("wrong choice")
+        tutorialGreg.sayText("wrong choice")
         pause(1000)
+        // while loop for firewall
         while (0 < info.life()) {
             projectile = sprites.createProjectileFromSprite(img`
                 ..442222222f2222
@@ -462,13 +490,43 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.greg, function (sprite, otherSpr
         }
     }
 })
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    tiles.setCurrentTilemap(tilemap`level2`)
+    tutorialGreg.setPosition(64, 19)
+})
+// submachine sword bullets
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    projectile2 = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . 5 5 . 5 5 5 5 5 5 5 1 e e . . 
+        . . 5 5 5 5 5 5 5 5 5 1 e e e . 
+        . 5 5 . 5 5 5 5 5 5 5 1 e e e e 
+        . . 5 5 5 5 5 5 5 5 5 1 e e e e 
+        . 5 5 . 5 5 5 5 5 5 5 1 e e e e 
+        . . 5 5 5 5 5 5 5 5 5 1 e e e . 
+        . 5 5 . 5 5 5 5 5 5 5 1 e e . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, player2, 50, 0)
+    pause(2000)
+})
+// damage for firewall
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
+    if (choice == 2) {
+        info.changeLifeBy(-1)
+    }
 })
 function save_name (text: string) {
     playerName = text
     return playerName
 }
+// Loss condition
 info.onLifeZero(function () {
     game.gameOver(false)
 })
@@ -845,7 +903,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, 
 let Too_bad = 0
 let ready = 0
 let The_Rizzard: Sprite = null
+let projectile2: Sprite = null
 let projectile: Sprite = null
+let player2: Sprite = null
 let playerName = ""
 let statusbar: StatusBarSprite = null
 let choice = 0
