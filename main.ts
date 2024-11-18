@@ -910,6 +910,7 @@ function wizard_boolean () {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, location) {
     background_wizard()
     set_players()
+    wizard_boolean()
 })
 let Too_bad = 0
 let ready = 0
