@@ -340,7 +340,6 @@ function background_wizard () {
         eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         `)
-    pause(3000)
 }
 function delete_sprites () {
     sprites.destroyAllSpritesOfKind(SpriteKind.greg)
@@ -642,9 +641,9 @@ function gregScene () {
 }
 function begin_convo_w_greg () {
     tutorialGreg.sayText("Hello " + playerName, 1000, false)
-    pause(2000)
+    pause(200)
     tutorialGreg.sayText("You're choices matter, 1 is yes, 2 is no unless specified", 5000, false)
-    pause(6000)
+    pause(200)
 }
 // Loss condition
 info.onLifeZero(function () {
@@ -1033,6 +1032,7 @@ function wizard_boolean () {
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, location) {
     background_wizard()
+    pause(3000)
     set_players()
     wizard_boolean()
 })
