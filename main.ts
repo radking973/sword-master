@@ -404,9 +404,12 @@ function delete_sprites () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     pause(5000)
 }
+// Starts Greg interaction.
 function greg_boolean () {
     let list: number[] = []
+    // Asks if player is ready.
     choice = ready2(list)
+    // if ready they fight, if not Greg kills the player.
     if (choice == 1) {
         tutorialGreg.sayText("alright, here we go", 2000, false)
         pause(500)
@@ -433,10 +436,13 @@ function greg_boolean () {
         playerModelTwo.setPosition(61, 96)
         controller.moveSprite(playerModelTwo, 35, 35)
         pause(1000)
+        // creates health bar for Greg.
         statusbar = statusbars.create(20, 4, StatusBarKind.Health)
         statusbar.attachToSprite(tutorialGreg)
         statusbar.value = 100
+        // Makes Greg move.
         gregFight(tutorialGreg)
+        // Makes Greg attack.
         attack()
     } else {
         tutorialGreg.sayText("wrong choice")
