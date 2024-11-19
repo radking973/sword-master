@@ -190,6 +190,7 @@ function spritesscene_greg () {
     controller.moveSprite(player1_v2, 20, 20)
     tutorialGreg.setPosition(107, 96)
 }
+// set/save player name
 function save_name (text: string) {
     playerName = text
     return playerName
@@ -254,6 +255,7 @@ statusbars.onZero(StatusBarKind.Health, function (status) {
     tiles.setCurrentTilemap(tilemap`level2`)
     playerModelTwo.setPosition(64, 19)
 })
+// set background greg
 function gregScene () {
     tiles.setCurrentTilemap(tilemap`level4`)
     scene.setBackgroundImage(img`
@@ -393,10 +395,11 @@ sprites.onOverlap(SpriteKind.Food, SpriteKind.greg, function (sprite, otherSprit
     statusbar.value += -10
     sprites.destroy(sprite)
 })
+// deletes sprites
+// 
 function delete_sprites () {
     sprites.destroyAllSpritesOfKind(SpriteKind.greg)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
-    sprites.destroyAllSpritesOfKind(SpriteKind.Wizard)
     pause(5000)
 }
 function greg_boolean () {
