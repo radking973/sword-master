@@ -8,6 +8,7 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
 function ready2 (list: any[]) {
     return game.askForNumber("Ready?", 1)
 }
+// CHARACTER CONVERSING
 function begin_convo_w_greg () {
     tutorialGreg.sayText("Hello " + playerName, 1000, false)
     pause(2000)
@@ -27,6 +28,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.greg, function (sprite, otherSpr
         greg_boolean()
     }
 })
+// set background and sprites
 function spritesscene_greg () {
     scene.setBackgroundImage(img`
         8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
@@ -567,6 +569,8 @@ function greg_boolean () {
         }
     }
 }
+/**
+ */
 let projectile: Sprite = null
 let projectile3: Sprite = null
 let gregLife = 0
