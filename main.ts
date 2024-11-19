@@ -225,6 +225,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, ot
     info.changeLifeBy(-1)
     sprites.destroy(sprite)
 })
+// fires projectiles until Greg dies.
 function attack () {
     while (gregLife == 0) {
         projectile3 = sprites.createProjectileFromSprite(img`
@@ -248,6 +249,7 @@ function attack () {
         pause(1000)
     }
 }
+// When Greg dies the map goes to the start and the projectiles stop.
 statusbars.onZero(StatusBarKind.Health, function (status) {
     sprites.destroy(tutorialGreg)
     gregLife = 1
@@ -402,9 +404,12 @@ function delete_sprites () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     pause(5000)
 }
+// Makes the interaction between the character and Greg.
 function greg_boolean () {
     let list: number[] = []
+    // asks if they want to fight.
     choice = ready2(list)
+    // if choose yes to fight they fight, if no Greg kills them.
     if (choice == 1) {
         tutorialGreg.sayText("alright, here we go", 2000, false)
         pause(500)
@@ -431,10 +436,13 @@ function greg_boolean () {
         playerModelTwo.setPosition(61, 96)
         controller.moveSprite(playerModelTwo, 35, 35)
         pause(1000)
+        // gives Greg a health bar.
         statusbar = statusbars.create(20, 4, StatusBarKind.Health)
         statusbar.attachToSprite(tutorialGreg)
         statusbar.value = 100
+        // Makes Greg move.
         gregFight(tutorialGreg)
+        // Makes Greg fire projectiles.
         attack()
     } else {
         tutorialGreg.sayText("wrong choice")
